@@ -11,7 +11,7 @@ export class AuthService {
 
   public async verifyAccountToken(userDto: UserDto): Promise<boolean> {
     if (userDto) {
-      let authClient = new OAuth2Client(config.CLIENT_ID);
+      const authClient = new OAuth2Client(config.CLIENT_ID);
 
       try {
         const decodedUserDto = await this.authClient.verifyToken(userDto.token);

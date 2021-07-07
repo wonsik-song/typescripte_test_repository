@@ -17,11 +17,11 @@ export class AuthController {
 
   public register(req: Request, res: Response) {
     const {email, password, token} = req.body;
-    let isNewUser = false;
+    const isNewUser = false;
     const userDto: UserDto = new UserDto(token, email, password);
 
     try {
-      let userData = this.userService.findUser(userDto.email);
+      const userData = this.userService.findUser(userDto.email);
       if (userData) {
         if (!this.authService.verifyAccountToken(userDto)) {
           throw new Error('email does not match with Database info');
@@ -58,7 +58,7 @@ export class AuthController {
     const secret = req.app.get('jwt-secret');
 
     try {
-      let userData = this.userService.findUser(userDto.email);
+      const userData = this.userService.findUser(userDto.email);
       if (!userData) {
         throw new Error('login failed');
       } else {

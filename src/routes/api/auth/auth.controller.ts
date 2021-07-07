@@ -40,7 +40,7 @@ exports.checkToken = (req: express.Request, res: express.Response) => {
 exports.register = (req: express.Request, res: express.Response) => {
   const {email, password, googleToken} = req.body;
   let isNewUser = false;
-  let userRequestInfo = {
+  const userRequestInfo = {
     email: '',
     password: password,
     id: '',

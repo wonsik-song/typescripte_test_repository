@@ -24,7 +24,7 @@ export class UserInMemoryRepositoryImpl implements UserRepository {
   }
 
   public get(userId: string): UserDto | undefined {
-    let userEntity = this.userEntityList.get(userId);
+    const userEntity = this.userEntityList.get(userId);
 
     if (userEntity) return this.mapper.toMapDto(userEntity);
     else return undefined;
