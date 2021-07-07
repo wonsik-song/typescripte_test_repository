@@ -1,18 +1,16 @@
 {
-    "editor.formatOnSave": true,
-    "tslint.autoFixOnSave": true,
-    "editor.codeActionsOnSave": {
-
-      "source.fixAll.eslint": true
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-
-    },  
-    "workbench.settings.useSplitJSON": true, 
-    "typescript.format.enable": false,
-    "prettier.tslintIntegration": true
-  }
+	"editor.formatOnSave": false,
+	"tslint.autoFixOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"workbench.settings.useSplitJSON": true,
+	"typescript.format.enable": false,
+	"prettier.tslintIntegration": true
+}

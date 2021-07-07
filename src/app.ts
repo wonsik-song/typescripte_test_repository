@@ -28,7 +28,7 @@ const app = new App().application;
 
 app.use(express.static('public'));
 
-app.all('/*', function(req: express.Request, res: express.Response, next) {
+app.all('/*', function(req: express.Request, res: express.Response, next: express.NextFunction) {
    res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "X-Requested-With");
    next();
