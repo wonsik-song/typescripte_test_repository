@@ -121,6 +121,7 @@ describe('사용자 정보 변경 테스트', () => {
 
 		expect(updateMethod).toBeCalledTimes(1);
 		expect(user).toHaveProperty('email', 'test@naver.com');
+		
 		expect(user).toHaveProperty('password', 'testtest2');
 	});
 
