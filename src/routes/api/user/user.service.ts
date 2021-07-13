@@ -2,39 +2,40 @@ import {UserDto} from './userDTO';
 import {UserRepository} from './user.repository';
 
 export class UserService {
-  constructor(private userRepository: UserRepository) {}
+	constructor(private userRepository: UserRepository) {}
 
-  public registerUser(userDto: UserDto): boolean {
-    if (this.isUserExist(userDto)) return false;
+	public registerUser(userDto: UserDto): boolean {
+		if (this.isUserExist(userDto)) return false;
 
-    this.userRepository.save(userDto);
-    return true;
-  }
+		this.userRepository.save(userDto);
+		return true;
+	}
 
-  private isUserExist(userDto: UserDto): boolean {
-    if (this.userRepository.get(userDto.email)) return true;
-    else return false;
-  }
+	private isUserExist(userDto: UserDto): boolean {
+		if (this.userRepository.get(userDto.email)) return true;
+		else return false;
+	}
 
-  public findUser(userId: string): UserDto | undefined {
-    return this.userRepository.get(userId);
-  }
+	public findUser(userId: string): UserDto | undefined {
+		return this.userRepository.get(userId);
+	}
 
-  public deleteUser(userId: string): boolean {
-    if (this.userRepository.get(userId)!) {
-      this.userRepository.delete(userId);
-      return true;
-    }
+	public deleteUser(userId: string): boolean {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		if (this.userRepository.get(userId)!) {
+			this.userRepository.delete(userId);
+			return true;
+		}
 
-    return false;
-  }
+		return false;
+	}
 
-  public changeUserInfo(userDto: UserDto): boolean {
-    if (this.userRepository.get(userDto.email)) {
-      this.userRepository.update(userDto);
-      return true;
-    }
+	public changeUserInfo(userDto: UserDto): boolean {
+		if (this.userRepository.get(userDto.email)) {
+			this.userRepository.update(userDto);
+			return true;
+		}
 
-    return false;
-  }
+		return false;
+	}
 }
