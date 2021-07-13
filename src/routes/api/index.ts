@@ -9,7 +9,7 @@ const auth = require('./auth');
 // const pairing = require('./pairing')
 // const history = require('./history')
 
-// router.use('/auth', auth)
+//router.use('/auth', auth)
 // router.use('/wine', wine)
 // router.use('/history', history)
 // router.use('/user', authMiddleware)
