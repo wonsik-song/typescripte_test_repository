@@ -1,6 +1,6 @@
 // please rename this file to config.js
-const path = require('path');
-const dataPath = path.join(__dirname, 'data');
+const path = require('path')
+const dataPath = path.join(__dirname, 'data')
 
 module.exports = {
 	secret: 'SeCrEtKeYfOrHaShInG',
@@ -14,4 +14,4 @@ module.exports = {
 	//'mongodbUri': 'mongodb://localhost:27017/myprojectdbname'
 	//'mongodbUri':'mongodb://foodsommelierdb:Uy19GVPU5AWIaZicj2rnCl2OQ1PSxJhNSuQduDtpqW5xOnQpq3ldUp5Ss4JPrTzOBiAVRhST9ZGiOlWdUeG1DQ==@foodsommelierdb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb'
 	//'mongodbUri':'mongodb://foodsommelierdb:Uy19GVPU5AWIaZicj2rnCl2OQ1PSxJhNSuQduDtpqW5xOnQpq3ldUp5Ss4JPrTzOBiAVRhST9ZGiOlWdUeG1DQ==@foodsommelierdb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb'
-};
+}
