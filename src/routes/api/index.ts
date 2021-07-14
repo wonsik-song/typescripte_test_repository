@@ -1,6 +1,6 @@
-const router = require('express').Router();
+const router = require('express').Router()
 // const authMiddleware = require('../../middlewares/auth')
-const auth = require('./auth');
+const auth = require('./auth')
 // const user = require('./user')
 // const wine = require('./wine')
 // const homepage = require('./homepage')
@@ -9,7 +9,7 @@ const auth = require('./auth');
 // const pairing = require('./pairing')
 // const history = require('./history')
 
-//router.use('/auth', auth)
+// router.use('/auth', auth)
 // router.use('/wine', wine)
 // router.use('/history', history)
 // router.use('/user', authMiddleware)
@@ -19,4 +19,4 @@ const auth = require('./auth');
 // router.use('/food', food)
 // router.use('/pairing', pairing)
 
-module.exports = router;
+module.exports = router

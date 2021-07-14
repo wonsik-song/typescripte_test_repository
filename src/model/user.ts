@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 // const crypto = require('crypto')
 // const config = require('../config')
 // const uuid = require('uuid');
@@ -18,7 +18,7 @@ const User = new Schema({
 	age: {type: Number},
 	birthday: {type: String},
 	userType: {type: String},
-});
+})
 
 // crypto.createHmac('sha1', 'secret')
 //              .update('mypasswssord')
@@ -42,18 +42,19 @@ User.statics.create = function (req: any) {
 		gender: req.body.gender,
 		age: req.body.age,
 		birthday: req.body.birthday,
-	});
-	return user.save();
-};
+	})
+	return user.save()
+}
 
 User.statics.findOneByEmail = function (email: any) {
-	console.log('findOneByEmail' + email);
+	console.log('findOneByEmail' + email)
 
 	return this.findOne({
 		email,
-	}).exec();
-};
+	}).exec()
+}
 
+// tslint:disable-next-line:only-arrow-functions
 User.methods.verify = function (password: string) {
 	// const encrypted = crypto.createHmac('sha1', config.secret)
 	//                   .update(password)
@@ -61,16 +62,16 @@ User.methods.verify = function (password: string) {
 	// console.log(this.password === encrypted)
 
 	// return this.password === encrypted
-	return true;
-};
+	return true
+}
 
 User.methods.assignAdmin = function () {
-	this.admin = true;
-	return this.save();
-};
+	this.admin = true
+	return this.save()
+}
 
 User.statics.delete = function (req: any) {
-	return this.findOneAndRemove({id: req.decoded.id}).exec();
-};
+	return this.findOneAndRemove({id: req.decoded.id}).exec()
+}
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('User', User)

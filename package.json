@@ -6,6 +6,7 @@
 	"scripts": {
 		"build": "tsc",
 		"dev": "nodemon  --exec ts-node src/app.ts ",
+		"start": "node dist/src/app.js ",
 		"test": "jest",
 		"lint": "eslint src/**/*.ts",
 		"format": "eslint --fix"
@@ -15,7 +16,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@types/express": "^4.17.12",
-		"@types/jest": "^26.0.23",
+		"@types/jest": "^26.0.24",
 		"@typescript-eslint/eslint-plugin": "^4.28.2",
 		"@typescript-eslint/parser": "^4.28.2",
 		"eslint": "^7.30.0",
@@ -35,6 +36,7 @@
 	},
 	"dependencies": {
 		"@babel/preset-typescript": "^7.14.5",
+		"@types/inversify": "^2.0.33",
 		"@types/jsonwebtoken": "^8.5.3",
 		"@types/mongoose": "^5.11.97",
 		"@types/morgan": "^1.9.2",
@@ -43,9 +45,11 @@
 		"google-auth-library": "^7.2.0",
 		"googleapis": "^80.0.0",
 		"husky": "^4.3.8",
+		"inversify": "^5.1.1",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.13.0",
 		"morgan": "^1.10.0",
+		"reflect-metadata": "^0.1.13",
 		"ts-jest": "^27.0.3",
 		"tslint-config-prettier": "^1.18.0",
 		"types": "file:../../../jsonwebtoken"
