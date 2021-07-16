@@ -1,12 +1,12 @@
 import 'reflect-metadata'
-import {injectable} from 'inversify'
+import { injectable } from 'inversify'
 import UserDataMapper from './user.data.mapper'
-import {UserRepository} from './user.repository'
-import {UserDto} from './userDTO'
-import {UserEntity} from './userEntity'
+import { UserDto } from './userDTO'
+import { UserEntity } from './userEntity'
+import { Repository } from '../interfaces/repository.interface'
 
 @injectable()
-export class UserInMemoryRepositoryImpl implements UserRepository {
+export class UserInMemoryRepositoryImpl implements Repository<UserDto, string> {
 	private userEntityList: Map<string, UserEntity>
 	private mapper: UserDataMapper
 

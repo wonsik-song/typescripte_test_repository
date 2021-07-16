@@ -5,6 +5,8 @@ module.exports = {
 		'^.+\\.(ts|tsx)?$': 'ts-jest',
 	},
 	testEnvironment: 'jsdom',
+	// testEnvironment: 'node',
+
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/$1',
 	},
@@ -14,4 +16,5 @@ module.exports = {
 	],
 	transformIgnorePatterns: ['<rootDir>/node_modules/'],
 	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
+	collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx, js,jsx}', '!**/node_modules/**', '!**/dist/**'],
 }

@@ -1,69 +1,65 @@
-/* =======================
-    LOAD THE DEPENDENCIES
-==========================*/
+import * as bodyParser from 'body-parser'
 import * as express from 'express'
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const mongoose = require('mongoose')
+import * as mongoose from 'mongoose'
+import * as morgan from 'morgan'
 
-/* =======================
-    LOAD THE CONFIG
-==========================*/
-const config = require('../config')
-const port = process.env.PORT || 3000
+import config from '../config'
+import Controller from './interfaces/controller.interface'
+import errorMiddleware from './middleware/error.middleware'
 
-/* =======================
-    EXPRESS CONFIGURATION
-==========================*/
 class App {
-	public application: express.Application
-	constructor() {
-		this.application = express()
+	public app: express.Application
+
+	constructor(controllers: Controller[]) {
+		this.app = express()
+
+		this.connectToTheDatabase()
+		this.initializeMiddlewares()
+		this.initializeControllers(controllers)
+		this.initializeErrorHandling()
+	}
+
+	public listen() {
+		this.app.listen(config.port, () => {
+			console.log(`App listening on the port ${process.env.PORT}`)
+		})
+	}
+
+	public getServer() {
+		return this.app
+	}
+
+	private initializeMiddlewares() {
+		// tslint:disable-next-line:only-arrow-functions
+		this.app.all('/*', function (req: express.Request, res: express.Response, next: express.NextFunction) {
+			res.header('Access-Control-Allow-Origin', '*')
+			res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+			next()
+		})
+
+		this.app.use(bodyParser.urlencoded({ extended: false }))
+		this.app.use(bodyParser.json())
+
+		this.app.use(morgan('dev'))
+
+		// set the secret key variable for jwt
+		this.app.set('jwt-secret', config.secret)
+	}
+
+	private initializeErrorHandling() {
+		this.app.use(errorMiddleware)
+	}
+
+	private initializeControllers(controllers: Controller[]) {
+		controllers.forEach(controller => {
+			this.app.use('/api', controller.router)
+		})
+	}
+
+	private connectToTheDatabase() {
+		const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env
+		// mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`)
 	}
 }
 
-const app = new App().application
-
-app.use(express.static('public'))
-
-// tslint:disable-next-line:only-arrow-functions
-app.all('/*', function (req: express.Request, res: express.Response, next: express.NextFunction) {
-	res.header('Access-Control-Allow-Origin', '*')
-	res.header('Access-Control-Allow-Headers', 'X-Requested-With')
-	next()
-})
-
-// parse JSON and url-encoded query
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-
-// print the request log on console
-app.use(morgan('dev'))
-
-// set the secret key variable for jwt
-app.set('jwt-secret', config.secret)
-
-// index page, just for testing
-app.get('/', (req, res) => {
-	res.send('Hello JWT')
-})
-
-// configure api router
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use('/api', require('./routes/api'))
-
-// open the server
-app.listen(port, () => {
-	console.log(`Express is running on port ${port}`)
-})
-
-/* =======================
-    CONNECT TO MONGODB SERVER
-==========================*/
-mongoose.connect(config.mongodbUri, {useNewUrlParser: true, useUnifiedTopology: true})
-mongoose.Promise = global.Promise
-const db = mongoose.connection
-db.on('error', console.error)
-db.once('open', () => {
-	console.log('connected to mongodb server')
-})
+export default App

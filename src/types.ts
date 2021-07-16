@@ -4,7 +4,7 @@ const TYPES = {
 	UserService: Symbol.for('UserService'),
 	AuthClient: Symbol.for('AuthClient'),
 	AuthService: Symbol.for('AuthService'),
-	AuthController: Symbol.for('AuthController'),
+	Controller: Symbol.for('Controller'),
 }
 
-export {TYPES}
+export { TYPES }

@@ -1,5 +1,5 @@
-import {UserDto} from './userDTO'
-import {UserEntity} from './userEntity'
+import { UserDto } from './userDTO'
+import { UserEntity } from './userEntity'
 
 class UserDataMapper {
 	public toMapDto(userEntity: UserEntity): UserDto {

@@ -1,10 +1,10 @@
-import {UserDto} from './userDTO'
+import { UserDto } from './userDTO'
 
 export class UserEntity {
-	public token: string
+	public token: string | undefined | null
 	public email: string
 	public password: string
-	constructor(token: string, email: string, password: string) {
+	constructor(token: string | undefined | null, email: string, password: string) {
 		this.token = token
 		this.email = email
 		this.password = password

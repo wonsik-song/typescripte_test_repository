@@ -1,12 +1,12 @@
 import 'reflect-metadata'
-import {UserDto} from './userDTO'
-import {UserRepository} from './user.repository'
-import {inject, injectable} from 'inversify'
-import {TYPES} from '../../../types'
+import { UserDto } from './userDTO'
+import { inject, injectable } from 'inversify'
+import { TYPES } from '../types'
+import { Repository } from '../interfaces/repository.interface'
 
 @injectable()
 export class UserService {
-	constructor(@inject(TYPES.UserRepo) private userRepository: UserRepository) {}
+	constructor(@inject(TYPES.UserRepo) private userRepository: Repository<UserDto, string>) {}
 
 	public registerUser(userDto: UserDto): boolean {
 		if (this.isUserExist(userDto)) return false

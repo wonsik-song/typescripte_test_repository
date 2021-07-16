@@ -22,6 +22,7 @@ module.exports = {
 			{
 				endOfLine: 'auto',
 				semi: false,
+				bracketSpacing: true,
 			},
 		],
 	},
